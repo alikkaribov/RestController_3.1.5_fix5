@@ -33,9 +33,10 @@ async function newUser() {
             },
             body: JSON.stringify({
                 firstName: form.firstName.value,
-                password: form.password.value,
-                city: form.city.value,
+                lastName: form.lastName.value,
+                age: form.age.value,
                 email: form.email.value,
+                password: form.password.value,
                 roles: newUserRoles
             })
         }).then(() => {

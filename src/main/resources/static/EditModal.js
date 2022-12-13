@@ -10,9 +10,10 @@ async function showEditModal(id) {
     let form = document.forms["formEditUser"];
     form.id.value = user.id;
     form.firstName.value = user.firstName;
-    form.password.value = user.password;
-    form.city.value = user.city;
+    form.lastName.value = user.lastName;
+    form.age.value = user.age;
     form.email.value = user.email;
+    form.password.value = user.password;
 
 
 
@@ -22,7 +23,7 @@ async function showEditModal(id) {
             roles.forEach(role => {
                 let selectedRole = false;
                 for (let i = 0; i < user.roles.length; i++) {
-                    if (user.roles[i].name === role.name) {
+                    if (user.roles[i].id === role.id) {
                         selectedRole = true;
                         break;
                     }

@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Init {
+public class
+
+Init {
 
     private UserServiceImpl userService;
     private RoleServiceImpl roleService;
@@ -39,14 +41,16 @@ public class Init {
         roleAdmin.add(role1);
         roleUser.add(role2);
 
-        User user1 = new User("admin", "admin", "Moscow", "admin@gmail.com", roleAdmin);
-        User user2 = new User("user", "user",  "Saint-Petersburg", "user@gmail.com", roleUser);
-        User user3 = new User("user2", "user2", "Kaluga", "user2@gmail.com", roleUser);
-        User user4 = new User("admin2", "admin2", "Kaluga", "admin2@gmail.com", allRoles);
+        User user1 = new User("admin", "adminovich", "32", "admin@gmail.com", "admin", roleAdmin);
+        User user2 = new User("user", "userovich", "12", "user@gmail.com", "user", roleUser);
+        User user3 = new User("admin", "adminovich1", "43", "admin@gmail.com", "admin1", roleAdmin);
+        User user4 = new User("user1", "userovich1", "34", "user1@gmail.com", "user1", roleUser);
+        User user5 = new User("test", "test", "25", "test", "test", allRoles);
 
         userService.add(user1);
         userService.add(user2);
         userService.add(user3);
         userService.add(user4);
+        userService.add(user5);
     }
 }

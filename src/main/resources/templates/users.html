@@ -74,8 +74,8 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>First Name</th>
-                                            <th>Password</th>
-                                            <th>City</th>
+                                            <th>Last Name</th>
+                                            <th>Age</th>
                                             <th>Email</th>
                                             <th>Role</th>
                                             <th>Edit</th>
@@ -104,15 +104,15 @@
                                                         </label>
                                                     </p>
                                                     <p>
-                                                        <label class="container-fluid" for="newUserPassword"><strong>Password</strong>
-                                                            <input class="form-control" type="password" name="password"
-                                                                   id="newUserPassword"/>
+                                                        <label class="container-fluid" for="newUserLastName"><strong>Last Name</strong>
+                                                            <input class="form-control" type="text" name="lastName"
+                                                                   id="newUserLastName"/>
                                                         </label>
                                                     </p>
                                                     <p>
-                                                        <label class="container-fluid" for="newUserCity"><strong>City</strong>
-                                                        <input class="form-control" type="text" name="city"
-                                                        id="newUserCity"/>
+                                                        <label class="container-fluid" for="newUserAge"><strong>Age</strong>
+                                                            <input class="form-control" type="text" name="age"
+                                                                   id="newUserAge"/>
                                                         </label>
                                                     </p>
                                                     <p>
@@ -122,10 +122,16 @@
                                                                    id="newUserEmail"/>
                                                         </label>
                                                     </p>
+                                                    <p>
+                                                        <label class="container-fluid" for="newUserPassword"><strong>Password</strong>
+                                                            <input class="form-control" type="password" name="password"
+                                                                   id="newUserPassword"/>
+                                                        </label>
+                                                    </p>
                                                     <label class="container-fluid"
                                                            for="newUserRoles"><strong>Role</strong>
                                                         <select id="newUserRoles" class="form-control" name="roles"
-                                                                multiple size="2">
+                                                                multiple size="0">
 
                                                         </select>
                                                     </label>
@@ -153,8 +159,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>First Name</th>
-                                    <th>Password</th>
-                                    <th>City</th>
+                                    <th>Last Name</th>
+                                    <th>Age</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                 </tr>
@@ -197,13 +203,13 @@
                                 </label>
                             </p>
                             <p>
-                                <label for="passwordEditUser"><strong>Password</strong>
-                                    <input class="form-control" type="password" name="password" id="passwordEditUser" required/>
+                                <label for="lastNameEditUser"><strong>Last name</strong>
+                                    <input class="form-control" type="text" name="lastName" id="lastNameEditUser" />
                                 </label>
                             </p>
                             <p>
-                                <label for="cityEditUser"><strong>City</strong>
-                                    <input class="form-control" type="text" name="city" id="cityEditUser" />
+                                <label for="ageEditUser"><strong>Age</strong>
+                                    <input class="form-control" type="age" name="age" id="ageEditUser" required/>
                                 </label>
                             </p>
                             <p>
@@ -211,8 +217,13 @@
                                     <input class="form-control" type="email" name="email" id="emailEditUser"/>
                                 </label>
                             </p>
+                            <p>
+                                <label for="passwordEditUser"><strong>Password</strong>
+                                    <input class="form-control" type="password" name="password" id="passwordEditUser" required/>
+                                </label>
+                            </p>
                             <label class="container-fluid col-6" for="rolesEditUser"><strong>Role</strong>
-                                <select class="form-control" id="rolesEditUser" name="roles" multiple size="2">
+                                <select class="form-select" multiple size="2" aria-label="role" th:name="roles" id="rolesEditUser" name="role">
 
                                 </select>
                             </label>
@@ -260,8 +271,8 @@
                             </p>
 
                             <p>
-                                <label for="cityDeleteUser"><strong>City</strong>
-                                    <input class="form-control" type="text" name="city" id="cityDeleteUser" disabled>
+                                <label for="lastNameDeleteUser"><strong>Last Name</strong>
+                                    <input class="form-control" type="text" name="lastName" id="lastNameDeleteUser" disabled>
                                 </label>
                             </p>
                             <p>
@@ -271,7 +282,13 @@
                             </p>
                             <label class="container-fluid col-6" for="rolesDeleteUser"><strong>Role</strong>
                                 <select class="form-control" id="rolesDeleteUser" name="roles" multiple size="2" disabled>
+                                    <option
+                                            th:each="allroles : ${allRoles}"
+                                            th:value="${allroles.id}"
+                                            th:text="${allroles.name}"
+                                            th:checked="${user.roles.contains(allroles)}">
 
+                                    </option>
                                 </select>
                             </label>
                             <h1></h1>

@@ -3,6 +3,7 @@ package ru.kata.spring.boot_security.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
@@ -15,21 +16,19 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "name")
     private String firstName;
-
+    @Column(name = "lastName")
+    private String lastName;
+    @Column(name = "age")
+    private String age;
+    @Column(name = "email")
+    private String email;
     @Column(name = "password")
     private String password;
 
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "email")
-    private String email;
-
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="users_roles",
+    @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles;
@@ -44,24 +43,27 @@ public class User implements UserDetails {
         role.getUsers().remove(this);
     }
 
-    public User() {}
-
-    public User(String userName, String password, String city, String email, List<Role> roles) {
-        this.firstName = userName;
-        this.password = password;
-        this.city = city;
-        this.email = email;
-        this.roles = roles;
+    public User() {
     }
 
-    public User(Long id, String userName, String password, String city, String email, List<Role> roles) {
+    public User(String firstName, String lastName, String age, String email, String password, List<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+    public User(Long id, String firstName, String lastName, String age, String email, String password, List<Role> roles) {
         this.id = id;
-        this.firstName = userName;
-        this.password = password;
-        this.city = city;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
         this.email = email;
+        this.password = password;
         this.roles = roles;
     }
+
 
     public Long getId() {
         return id;
@@ -94,6 +96,14 @@ public class User implements UserDetails {
         return firstName;
     }
 
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
     @Override
     @JsonIgnore
     public boolean isAccountNonExpired() {
@@ -118,12 +128,12 @@ public class User implements UserDetails {
         return true;
     }
 
-    public String getCity() {
-        return city;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setPassword(String password) {
@@ -152,8 +162,8 @@ public class User implements UserDetails {
         return "User{" +
                 "id=" + id +
                 ", username='" + firstName + '\'' +
-                ", password='" + password + '\'' +
-                ", city='" + city + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", roles=" + getRoles() +
                 '}';

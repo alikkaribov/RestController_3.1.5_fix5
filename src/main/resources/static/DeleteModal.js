@@ -9,10 +9,9 @@ async function showDeleteModal(id) {
     let form = document.forms["formDeleteUser"];
     form.id.value = user.id;
     form.firstName.value = user.firstName;
-    form.password.value = user.password;
-    form.city.value = user.city;
+    form.lastName.value = user.lastName;
     form.email.value = user.email;
-
+    form.password.value = user.password;
 
     $('#rolesDeleteUser').empty();
 
